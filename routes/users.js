@@ -50,6 +50,16 @@ router.get("/sort", (req, res) => {
     res.send(sorted_users);
 });
 
+{/*
+Express.js uses specificity and priority of routes, so we need to put the codes of 
+literal paths before parametric paths for the routes to work correctly.
+
+The DOB sort (/sort)  path is a literal path, the last name (lastName/:lastName) path 
+has a literal path and a parametric path, while the email path (/:email)  is a parametric path.
+
+We can thus keep the "sort" endpoint 1st followed by the "last name" endpoint, or vice versa. 
+But, the "email" endpoint should come after these 2 for getting the correct output.
+*/}
 
 // GET by specific ID request: Retrieve a single user with email ID
 router.get("/:email",(req,res)=>{
